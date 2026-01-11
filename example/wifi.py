@@ -1,3 +1,4 @@
+
 import network
 import ujson
 import time
@@ -61,7 +62,7 @@ class WiFi:
         if ssid and password:
             return self._connect(ssid, password)
             
-        config = self._read_config()
+        config = self._read_wifi_config()
         if config:
             return self._connect(config[self.CONFIG_SSID], config[self.CONFIG_PASSWORD])
             
@@ -186,7 +187,7 @@ def test_wifi():
         
         print("\n=== 时间测试完成 ===")
         
-    elif ap_if:
+    elif wifi.ap_if:
         ssid, ip = wifi.get_ap_info()
         print(f"已启动AP模式，SSID: {ssid}, IP: {ip}")
         print("由于未连接到WiFi，跳过时间同步测试")
@@ -222,3 +223,4 @@ def test_wifi():
 
 if __name__ == "__main__":
     test_wifi()
+
